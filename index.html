@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab</title>
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="w-screen h-screen flex items-center justify-center">
+    <!-- 1. IDLE SCREEN -->
+    <div id="idle-container" class="absolute flex items-center justify-center">
+        <svg id="idle-circle-svg" viewBox="0 0 100 100">
+            <path id="circle-part-1" class="circle-part" d="M 50,0 A 50,50 0 0,1 100,50"></path><path id="circle-part-2" class="circle-part" d="M 100,50 A 50,50 0 0,1 50,100"></path><path id="circle-part-3" class="circle-part" d="M 50,100 A 50,50 0 0,1 0,50"></path><path id="circle-part-4" class="circle-part" d="M 0,50 A 50,50 0 0,1 50,0"></path>
+            <path id="idle-eye" d="M30 50 Q 50 30 70 50 Q 50 70 30 50 Z"></path>
+        </svg>
+        <div id="segment-study" class="segment">Study</div><div id="segment-research" class="segment">Research</div><div id="segment-earning" class="segment">Earning</div>
+    </div>
+
+    <!-- 2. TRANSITIONS & INFO BAR -->
+    <div id="transition-burst" class="absolute top-0 left-0 w-full h-full" style="transform: scale(0); border-radius: 50%;"></div>
+    <div id="info-bar"><div id="clock"></div><div id="greeting"></div></div>
+
+    <!-- 3. ANIMATION OVERLAYS -->
+    <div id="iron-man-overlay" class="animation-overlay hidden"><svg id="iron-man-mask-svg" width="300" height="300" viewBox="0 0 100 100"><path class="part" d="M 50 10 L 80 30 L 75 70 L 50 90 L 25 70 L 20 30 Z"></path><path class="part" d="M 50 10 Q 60 12, 80 30"></path><path class="part" d="M 50 10 Q 40 12, 20 30"></path><path class="part" d="M 25 70 C 30 75, 40 80, 50 90"></path><path class="part" d="M 75 70 C 70 75, 60 80, 50 90"></path><path class="part" style="fill:#00aaff;" d="M 30 40 L 45 50 L 30 60 Z"></path><path class="part" style="fill:#00aaff;" d="M 70 40 L 55 50 L 70 60 Z"></path><path class="part" d="M 45 50 L 55 50 L 50 65 Z"></path></svg></div>
+    <div id="money-overlay" class="animation-overlay hidden"><div class="briefcase"><div class="briefcase-top"></div></div></div>
+
+    <!-- 4. SIDEBAR -->
+    <div id="sidebar-handle"></div>
+    <div id="left-sidebar" class="glass-card"><h2 class="text-2xl font-bold text-blue-400 mb-4">Global Apps</h2><p>Pomodoro Timer</p><p>Note Taker</p><p>Citation Finder</p></div>
+
+    <!-- 5. DASHBOARDS -->
+    <div id="study-dashboard" class="dashboard" style="background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(10, 10, 10, 0) 60%);">
+        <div class="dashboard-content"><div class="apps-handle top-handle">Apps</div><div class="tools-handle top-handle">Tools</div>
+            <div class="apps-panel side-panel glass-card"><h3>Study Apps</h3><p>Flashcard Generator</p><p>Quizlet Link</p></div>
+            <div class="tools-panel side-panel glass-card"><h3>Study Tools</h3><p>Mind Map</p><p>Formula Sheet</p></div>
+            <div class="central-content"><div class="central-button glass-card text-green-400">Click to<br>STUDY</div></div>
+        </div>
+    </div>
+    <div id="research-dashboard" class="dashboard" style="background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(10, 10, 10, 0) 60%);">
+        <div class="dashboard-content"><div class="apps-handle top-handle">Apps</div><div class="tools-handle top-handle">Tools</div>
+            <div class="apps-panel side-panel glass-card"><h3>Research Apps</h3><p>Google Scholar</p><p>Zotero</p></div>
+            <div class="tools-panel side-panel glass-card"><h3>Research Tools</h3><p>AI Summarizer</p><p>NotebookLM</p></div>
+            <div class="central-content">
+                <svg id="jarvis-hologram" viewBox="0 0 100 100"><path class="holo-part" d="M50 2 C 20 2, 20 30, 50 30 S 80 2, 50 2 Z"></path><path class="holo-part" d="M30 40 C 40 35, 60 35, 70 40"></path><path class="holo-part" d="M25 50 C 35 45, 65 45, 75 50"></path><path class="holo-part" d="M20 60 L 80 60"></path><path class="holo-part" d="M30 70 C 40 75, 60 75, 70 70"></path><circle class="holo-part" cx="40" cy="50" r="3"></circle><circle class="holo-part" cx="60" cy="50" r="3"></circle></svg>
+                <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 text-center"><p class="text-xl font-bold text-blue-400">"At your service, sir."</p></div>
+            </div>
+        </div>
+    </div>
+    <div id="earning-dashboard" class="dashboard" style="background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, rgba(10, 10, 10, 0) 60%);">
+        <div class="dashboard-content"><div class="apps-handle top-handle">Apps</div><div class="tools-handle top-handle">Tools</div>
+            <div class="apps-panel side-panel glass-card"><h3>Earning Apps</h3><p>Upwork</p><p>Fiverr</p></div>
+            <div class="tools-panel side-panel glass-card"><h3>Earning Tools</h3><p>Invoice Generator</p><p>Finance Tracker</p></div>
+            <div class="central-content"><div class="central-button glass-card text-yellow-400">Manage<br>MONEY</div></div>
+        </div>
+    </div>
+
+    <!-- Custom Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
+

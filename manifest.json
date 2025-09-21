@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Stark Tech New Tab",
+  "version": "1.0",
+  "description": "An advanced new tab dashboard for students, researchers, and earners, inspired by futuristic tech.",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Stark Tech New Tab"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
